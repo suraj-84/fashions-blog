@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Box,
   InputBase,
+  Menu,
+  
   styled,
   Toolbar,
   Typography,
 } from "@mui/material";
-import { Facebook, Instagram, Menu, Twitter } from "@mui/icons-material/";
+import { Facebook, Instagram, Menu as  MenuIcon, Twitter } from "@mui/icons-material/";
 
 const Navbar = () => {
   const StyledToolbar = styled(Toolbar)({
@@ -33,8 +35,9 @@ const Navbar = () => {
     { Name: "Blog", Link: "#" },
     { Name: "Contact Us", Link: "#" },
   ];
+  const[open,SetOpen] =useState(false)
   return (
-    <AppBar sx={{ background: "black" }}>
+    <AppBar sx={{ background: "black" }} position={'static'}>
       <StyledToolbar>
         <SocialBox>
           <Facebook />
@@ -53,10 +56,37 @@ const Navbar = () => {
             placeholder="Search..."
             sx={{ color: "whitesmoke" }}
           />
-          <Menu sx={{color:"white", display:{xs:"block",sm:"block",md:"none"}}}/>
+          <MenuIcon sx={{color:"white", display:{xs:"block",sm:"block",md:"none"}}}
+            onClick={()=>SetOpen(!open)}
+          />
 
         </SearchBox>
       </StyledToolbar>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+      
+        open={open}
+        onClose={()=>SetOpen(!open)}
+       
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+      >
+      <Box sx={{width:350,height:"90vh"}}>
+      {MenuItems.map((item) => (
+            <Typography sx={{ cursor: "pointer", fontSize: "15px" }}>
+              {item.Name}
+            </Typography>
+          ))}
+      </Box>
+       
+      </Menu>
     </AppBar>
   );
 };
