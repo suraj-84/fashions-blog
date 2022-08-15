@@ -1,40 +1,31 @@
-import { Box, CardContent, CardMedia, Grid, Typography } from '@mui/material'
-import React from 'react'
-import HeroImage from '../../static/HeroImage.webp'
+import { Box, Grid,} from "@mui/material";
+import React from "react";
+import HeroImage from "../../static/HeroImage.webp";
+import Card from "../Card/Card";
 
 const Recents = () => {
   return (
     <Box>
-    <Grid container>
-        <Grid item md={6} xs={12}>
-        <CardMedia
-        component="img"
-        alt="green iguana"
-        height="100%"
-        image={HeroImage}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="body1" align="center"component="div" color='tomato'>
-         perfumes
-        </Typography>
-        <Typography gutterBottom variant="h5" align="center"component="div" >
-         wearing this will make everyone love you
-        </Typography>
-        <Typography gutterBottom variant="body2" align="center"component="div" >
-        its women love
-        </Typography>
-        <Typography variant="body2" align='center' color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
-      </CardContent>
-       </Grid>
-        <Grid item sx={{background:'green'}}>
-item2
+      <Grid container rowSpacing={1} columnSpacing={{xs:1,sm:2,md:1}}>
+        <Grid >
+        <Card HeroImage={HeroImage} />
         </Grid>
-    </Grid>
+        <Grid item md={6} xs={12}>
+        <Card HeroImage={HeroImage} />
+        </Grid>
+        <Grid item md={6} xs={12}>
+        <Card HeroImage={HeroImage} />
+        </Grid>
+        <Grid item md={6} xs={12}>
+        <Card HeroImage={HeroImage} />
+        </Grid>
+        <Grid item md={6} xs={12} >
+        <Card HeroImage={HeroImage} />
+        </Grid>
+       
+      </Grid>
     </Box>
-  )
-}
+  );
+};
 
-export default Recents
+export default Recents;
